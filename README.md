@@ -47,6 +47,10 @@ it back up again. But if you *delete* the image, then your data will be gone
 and you'll be back to whatever you have in your sql folder being in the 
 database.
 
+If you have installed docker correctly and run the commands above, you should be
+able to open Docker desktop and see something like the following:
+<img src="docker-success.png" alt="Docker Desktop" width="512"/>
+
 ## Project Layout
 ### sql
 This directory contains sql used to create your database. 
