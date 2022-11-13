@@ -1,0 +1,38 @@
+version: "2"
+services:
+    www:
+        build: .
+        ports: 
+            - "2250:80"
+        volumes:
+            - ./www:/var/www/html/
+        links:
+            - db
+        networks:
+            - default
+    db:
+        image: mysql
+        ports: 
+            - "2252:3306"
+        environment:
+            MYSQL_DATABASE: cis2250
+            MYSQL_USER: cis2250
+            MYSQL_PASSWORD: cis2250
+            MYSQL_ROOT_PASSWORD: cis2250
+        volumes:
+            - ./sql:/docker-entrypoint-initdb.d
+            # - data:/var/lib/mysql
+        networks:
+            - default
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links: 
+            - db:db
+        ports:
+            - 2251:80
+        environment:
+            MYSQL_USER: cis2250
+            MYSQL_PASSWORD: cis2250
+            MYSQL_ROOT_PASSWORD: cis2250
+# volumes:
+    # data:

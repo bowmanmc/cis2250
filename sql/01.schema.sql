@@ -1,0 +1,32 @@
+-- Michael Bowman
+-- Donut Shop
+
+-- Drop tables if there
+DROP TABLE IF EXISTS donut_allergen;
+DROP TABLE IF EXISTS donut;
+DROP TABLE IF EXISTS allergen;
+
+-- Create tables
+CREATE TABLE donut (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE allergen (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE donut_allergen (
+    donut_id INT NOT NULL,
+    allergen_id INT NOT NULL,
+    PRIMARY KEY (donut_id, allergen_id),
+    FOREIGN KEY (donut_id) REFERENCES donut(id) ON DELETE CASCADE,
+    FOREIGN KEY (allergen_id) REFERENCES allergen(id) ON DELETE CASCADE
+);
+
