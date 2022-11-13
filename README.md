@@ -49,6 +49,7 @@ database.
 
 If you have installed docker correctly and run the commands above, you should be
 able to open Docker desktop and see something like the following:
+
 <img src="docker-success.png" alt="Docker Desktop" width="512"/>
 
 ## Project Layout
